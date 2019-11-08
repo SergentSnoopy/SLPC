@@ -1,0 +1,155 @@
+\documentclass[10pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[francais]{babel}
+\usepackage[T1]{fontenc}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\author{Prat Gary}
+\title{SLPC}
+\begin{document}
+\maketitle
+
+\section{Exercise 73}
+
+{\large 1.} \\
+L1: if d<=0 goto L4\\
+a:=b+c\\
+d:=d-b\\
+e:=a+f\\
+if e <= 0 goto L2\\
+f:=a-d\\
+b:=d+f\\
+goto L3\\
+L2: e:=a-c\\
+L3: b=a+c\\
+goto L1\\
+\\
+L4:fin
+\\
+\\
+
+{\large 2.} \\
+Bloc1: if d>0\\\\
+B2: a:=b+c\\
+d:=d-b\\
+e:=a+f\\
+if e<=0 goto L2\\
+\\
+B3: f:=a-d\\
+b:=d+f\\\\
+B4: e:=a-c\\\\
+B5: b:= a+c\\
+B6:fin\\
+
+{\large 3.}\\
+Out(B)=$U_{B' \in Successor(B)}$  In(B')\\
+In(B)=(Out(B) $\setminus$ Kill(B) ) U Gen(B)\\
+Out(B)=$\oslash$ $\forall$B $\leftarrow$ Initialisation\\
+
+\begin{tabular}{|c|c|c|c|c|c|c|c|c|c|}
+\hline 
+Bloc & Kill & Gen & Out() & In() & Out() & In() & Out() & In() & Out()  \\ 
+\hline 
+B1 & $\oslash$ & d & $\oslash$ & d & b,c,d,f & b,c,d,f & b,c,d,f & b,c,d,f & b,c,d,f  \\ 
+\hline 
+B2 & a,d,e & b,c,d,f & $\oslash$ & b,c,d,f & a,c,d & b,c,d,f & a,c,d & b,c,d,f & a,c,d \\ 
+\hline 
+B3 & f,b & a,d & $\oslash$ & a,d & a,c & a,c,d & a,c,d & a,c,d & a,c,d,f \\ 
+\hline 
+B4 & e & a,c & $\oslash$ & a,c & a,c & a,c & a,c,d & a,c,d & a,c,d,f \\ 
+\hline 
+B5 & b & a,c & $\oslash$ & a,c & d & a,c,d & b,c,d,f & a,c,d,f & b,c,d,f  \\ 
+\hline 
+B6 & $\oslash$ & $\oslash$ & $\oslash$ & $\oslash$ & $\oslash$ & $\oslash$ & $\oslash$ & $\oslash$ & $\oslash$ \\ 
+\hline 
+\end{tabular} 
+\\
+\\
+
+\begin{tabular}{|c|c|c|}
+\hline
+In() & Out() & In()\\
+\hline 
+b,c,d,f & b,c,d,f & b,c,d,f\\
+\hline 
+b,c,d,f & a,c,d,f & b,c,d,f\\
+\hline 
+a,c,d & a,c,d,f & a,c,d\\
+\hline 
+ a,c,d,f & a,c,d,f & a,c,d,f \\
+\hline 
+a,c,d,f & b,c,d,f & a,c,d,f\\
+\hline 
+ $\oslash$ & $\oslash$ & $\oslash$\\
+\hline 
+\end{tabular} 
+\\
+\\
+
+{\large 5.}\\
+A supprimer:\\\\
+B3:b:=d+f\\
+B4: e:=a+c\\
+
+\section{Exercise 74}
+
+2.\\\\
+On prend le programme 2\\
+B1:a:=0\\
+B2: b:=a+1\\
+c:=c+b\\
+a:=b*2\\
+B3:a<N\\
+B4:return(b)\\
+
+\begin{tabular}{|c|c|c|c|c|c|c|c|c|}
+\hline 
+Bloc & Kill & Gen & Out() & In() & Out() & In() & Out() & In() \\ 
+\hline 
+B1 & a & $\oslash$ & $\oslash$ & $\oslash$ & a,c & c & a,c & c \\ 
+\hline 
+B2 & a,b,c & a,c & $\oslash$ & a,c & a & a,c & a,b,c & a,c \\ 
+\hline 
+B3 & $\oslash$ & a & $\oslash$ & a & a,b,c & a,b,c & a,b,c & a,b,c \\ 
+\hline 
+B4 & $\oslash$ & b & $\oslash$ & b & $\oslash$ & b & $\oslash$ & b \\ 
+\hline 
+\end{tabular} 
+\\\\
+
+3.\\
+
+Il n'y a rien à supprimer\\
+\\
+\\
+
+2.\\\\
+On prend le programme 3\\
+B1:a:=0\\
+B2: b:=a+1\\
+c:=b\\
+a:=b*2\\
+B3:a<N\\
+B4:return(b)\\
+
+\begin{tabular}{|c|c|c|c|c|c|c|c|c|}
+\hline 
+Bloc & Kill & Gen & Out() & In() & Out() & In() & Out() & In() \\ 
+\hline 
+B1 & a & $\oslash$ & $\oslash$ & $\oslash$ & a & $\oslash$ & a & $\oslash$ \\ 
+\hline 
+B2 & a,b,c & a & $\oslash$ & a & a & a & a,b & a \\ 
+\hline 
+B3 & $\oslash$ & a & $\oslash$ & a & a,b & a,b & a,b & a,b \\ 
+\hline 
+B4 & $\oslash$ & b & $\oslash$ & b & $\oslash$ & b & $\oslash$1 & b \\ 
+\hline 
+\end{tabular} 
+\\
+\\
+
+3.\\
+Il faut supprimer :\\
+B2:a:=b\\
+\end{document}
