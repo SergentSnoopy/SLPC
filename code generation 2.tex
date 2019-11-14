@@ -1,0 +1,87 @@
+\documentclass[10pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{tabto}
+\author{Prat Gary}
+\title{Code Generation 2}
+\begin{document}
+\maketitle
+\section{Exercise 79}
+
+1.\\
+for (var = lbound; var $<$ ubound;step) \{\\ 
+\tabto{0.5cm}S(var)\\
+\}
+\\\\
+GCStm(for(v=lb;v $<$ ub;step)\{S(v)\})=\\
+let end,debut := new Label()\\
+(Clb,Rv) $\leftarrow$GCAexp(lb)\\
+(Cub,Ri1) $\leftarrow$GCAexp(ub)\\
+(Cst,Rs)$\leftarrow$ GCAexp(step)\\
+Clb$\Vert$\\
+debut:$\Vert$\\
+Cub$\Vert$\\
+Cst$\Vert$\\
+CMP Rv Ri1$\Vert$\\
+BGE end$\Vert$\\
+GCStm(S(v),Rv)$\Vert$\\
+ADD Rv,Rv,Rs$\Vert$\\
+BA debut$\Vert$\\
+end:\\\\\\
+2.\\
+Prologue(44)\\\\
+SUB R0,R0,R0\\
+ADD R1,R0,R0\\
+ST R1,[FP-44]\\
+debut:\\
+ADD R2,R0,10\\
+LD R1,[FP-44]\\
+CMP R1,R2\\
+BGE end:\\
+ADD R3,R0,R0\\
+LD R1,[FP-44]\\
+ADD R4,R1,1\\
+MUL R5,R4,4\\
+ST R3,[FP-R5]\\
+LD R1,[FP-44]\\
+ADD R1,R1,1\\
+ST R1,[FP-44]\\
+BA debut\\
+end:\\
+Epilogue\\\\
+3.Non fait, trop similaire.\\
+\\
+\section{Exercise 80}
+1. repeat S until b\\
+\\
+GCStm(repeat S until b)=\\
+let begin,end:=new Label()\\
+begin:$\Vert$\\
+GCStm(S)$\Vert$\\
+GCBexp(b,end,begin)$\Vert$\\
+end:\\
+\\
+2. b1 xor b2\\
+\\
+GCBexp(b1 xor b2,l1,l2)=)$\backslash\backslash$ l1,l2 =Label\\
+let bt1,bf1= new label()\\
+GCBexp(b1,bt1,bf1)\\
+bt1:\\
+GCBexp(b2,l2,l1)$\backslash\backslash$ b1=True\\
+bf1:\\
+GCBexp(b2,l1,l2)$\backslash\backslash$ b1=False\\
+\\
+3. b ? e1 : e2\\
+\\
+$\backslash\backslash$ Pas forcement juste, en attente de correction.\\
+BCAexp(b ? e1 : e2)=\\
+let R1 =new Alloc()\\
+let b1,b2 =new Label()\\
+GCBexp(b,b1,b2)\\
+b1:\\
+ADD R1,e1,0\\
+b2:\\
+ADD R1,e2,0\\
+\end{document}
