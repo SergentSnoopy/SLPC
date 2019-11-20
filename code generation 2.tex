@@ -76,12 +76,12 @@ GCBexp(b2,l1,l2)$\backslash\backslash$ b1=False\\
 3. b ? e1 : e2\\
 \\
 $\backslash\backslash$ Pas forcement juste, en attente de correction.\\
-BCAexp(b ? e1 : e2)=\\
+GCAexp(b ? e1 : e2)=\\
 let R1 =new Alloc()\\
 let b1,b2 =new Label()\\
 GCBexp(b,b1,b2)\\
 b1:\\
-ADD R1,e1,0\\
+ADD R1,GCAexp(e1),0\\
 b2:\\
-ADD R1,e2,0\\
+ADD R1,GCAexp(e2),0\\
 \end{document}

@@ -1,0 +1,85 @@
+\documentclass[10pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\author{Prat Gary}
+\title{Code Generation 3}
+\begin{document}
+\maketitle
+\section{Exercise 81}
+$\backslash\backslash$ Push(R1) $\rightarrow$ Empile R1\\\\
+\begin{tabbing}
+\hspace{8cm}\=\kill
+ main: \> main.p: \\\\
+ Prologue(8) \> Prologue(0) \\ 
+ SUB R0,R0,R0 \> LD R1,[FP+8] \\ 
+ ADD R1,R0,1 \> LD R2,[R1-4]\\
+ ST R1,[FP-4] \> LD R3,[FP+8]  \\ 
+ Push(FP) \>  ST R2,[R3-8]\\ 
+ Call main.p \>   Epilogue\\ 
+ ADD SP,SP,4 \>  RET\\ 
+ Epilogue \> \\
+ RET \> \\
+\end{tabbing}
+\section{Exercise 82}
+\begin{tabbing}
+\hspace{8cm}\=\kill
+main:\> main.p:\\
+Prologue(12) \> Prologue(8)\\
+SUB R0,R0,R0 \> SUB R0,R0,R0\\
+ADD R1,R0,5 \> ADD R1,R0,4\\
+ST R1,[FP-4] \> ST R1,[FP-4]\\
+Push(FP) \> ADD R2,R0,5\\
+call main.p \> LD R3,[FP+8]\\
+ADD SP,SP,4 \> ST R2,[R3-8]\\
+Epilogue \> LD R4,[FP-4]\\
+RET \> LD R5,[FP+8] \\
+\> LD R6,[R5-8]\\
+\> ADD R7,R4,R6\\
+\> LD R8,[FP+8]\\
+\> ST R7,[R8-12]\\
+\> Epilogue\\
+\> RET\\
+\end{tabbing}
+\section{Exercise 82 bis}
+begin\\
+var x:int\\
+var y :int\\
+var z :int\\
+Procedure P(u.int)\\
+begin\\
+var x :int\\
+var t:int\\
+x:=4\\
+x:=5\\
+z:= x+u\\
+end\\
+call p(17)\\
+call(x-1)\\
+end
+\\
+\\
+\begin{tabbing}
+\hspace{8cm}\=\kill
+main:\> main.p:\\
+Prologue(12) \> Prologue(8)\\
+SUB R0,R0,R0 \> SUB R0,R0,R0\\
+ADD R1,R0,5 \> ADD R1,R0,4\\
+ST R1,[FP-4] \>   ST R1,[FP-4]\\
+ADD R2,R0,17\>  ADD R2,R0,5\\
+Push(R2)\> LD R3,[FP+8] \\
+Push(FP) \> ST R2,[R3-8]\\
+call main.p \> LD R4,[FP-4]\\
+ADD SP,SP,8 \> LD R5,[FP+12]\\
+LD R3 [SP-4]\> ADD R6,R4,R5\\
+SUB R4,R3,1\> LD R7,[FP+8]\\
+Push(R4)\> ST R6,[R7-12]\\
+Push(FP)\> Epilogue\\
+Call main.p\> RET\\
+ADD SP,SP,8\>\\
+Epilogue \> \\
+RET \> \\
+
+\end{tabbing}
+\end{document}
