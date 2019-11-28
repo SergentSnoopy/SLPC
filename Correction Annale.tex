@@ -1,0 +1,84 @@
+\documentclass[10pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\author{Prat Gary}
+\title{Correction Annales}
+\begin{document}
+\maketitle
+\section{Partie 2}
+\subsection{Exercice 5}
+1.\\
+ $\dfrac{(D_{v},\emptyset,\sigma)\rightarrow _{D} (\rho_{l},\sigma')  (S,(\rho^{chap}\bigoplus\rho_{l},\sigma')\rightarrow\sigma" }
+ {(begin \,  D_{v} \, S end,\rho^{chap},\sigma) \rightarrow \sigma"}$
+ \\\\
+ \\
+ 2.\\
+$ \dfrac{a_x = New_s() (D_v,\rho_l[x \rightarrow a_x],\sigma[a_x \rightarrow 0])\rightarrow(\rho_l ',\sigma')}
+{(int~x;D_v,p_l,\sigma) \rightarrow(\rho_l ',\sigma')}$
+\\\\\\
+$ \dfrac{a_x = New_s() (D_v,\rho_l[x \rightarrow a_x],\sigma[a_x \rightarrow NULL])\rightarrow(\rho_l ',\sigma')}
+{(int* x;D_v,p_l,\sigma) \rightarrow(\rho_l ',\sigma'}$
+\\
+\\
+\\
+3.\\
+$[\tau(x)=\tau(y)=Int ]\dfrac{ }{(x:=y,\rho^{chap},\sigma) \rightarrow \sigma [\rho^{chap}(x) \rightarrow \sigma(\rho^{chap}(y))]}$
+\\
+\\
+4.\\
+$[\tau(x)=\tau(y)=Int* ]\dfrac{ }{(x:=y,\rho^{chap},\sigma) \rightarrow \sigma [\rho^{chap}(x) \rightarrow
+ \sigma(\rho^{chap}(y))]}$
+\\
+\\
+5.\\
+$[\tau(x)= int ~\tau(y)=Int* ]\dfrac{ }{(x:=y,\rho^{chap},\sigma) \rightarrow \sigma [\rho^{chap}(x) \rightarrow
+\sigma( \sigma(\rho^{chap}(y)))]}$
+\\
+\\
+6.\\
+$[\tau(x)= int* ~\tau(y)=Int ]\dfrac{ }{(x:=y,\rho^{chap},\sigma) \rightarrow \sigma [\rho^{chap}(x) \rightarrow
+\rho^{chap}(y)]}$
+\\
+\\
+\subsection{Exercice 6}
+
+$ [\tau(x)=Int*] \dfrac{v=N[n] \qquad l_h = new(v)}{(x=malloc(n),\rho^{chap},\sigma) \rightarrow (\sigma[\rho^{chap}(x) \rightarrow (l_h,v)])}$
+\subsection{Exercice 7}
+$\dfrac{}{(free(x),\rho^{chap},\sigma) \rightarrow \sigma}$
+\\\\
+1.\\
+$\dfrac{\sigma(\rho^{chap}( x))\in (Adr_h \times N)}
+{(free(x),\rho^{chap},\sigma) \rightarrow \sigma}$
+\\
+\\
+2.\\
+$\dfrac{\sigma(\rho^{chap}( x))\in (Adr_h \times N)}
+{(free(x),\rho^{chap},\sigma) \rightarrow \sigma(\rho^{chap} \rightarrow NULL)}$
+\section{Partie 3}
+\subsection{Exercice 10}
+\begin{tabular}{|c|c|c|c|c|c|c|c|c|c|c|}
+\hline 
+bloc & Pred & Kill & Gen & In & Out & In & Out & In & Out \\ 
+\hline 
+B1 & $\emptyset$ & t1,t2 & $\emptyset$ & $\emptyset$ & $\emptyset$ & $\emptyset$ & $\emptyset$ & $\emptyset$ & $\emptyset$ \\ 
+\hline 
+B2 & B1,B4 & $\emptyset$ & $\emptyset$ & t1,t2 & t1,t2 & $\emptyset$ & $\emptyset$ & $\emptyset$ & $\emptyset$ \\ 
+\hline 
+B3 & B2 & $\emptyset$ & t1,t2 & t1,t2 & t1,t2 & t1,t2 & t1,t2 & $\emptyset$ & t1,t2 \\ 
+\hline 
+B4 & B3 & t1,t2 & $\emptyset$ & t1,t2 & $\emptyset$ & t1,t2 & $\emptyset$ & t1,t2 & $\emptyset$ \\ 
+\hline 
+B5 & B2 & t1,t2 & t2 & t1,t2 & t2 & t1,t2 & t2 & $\emptyset$ & t2  \\ 
+\hline 
+\end{tabular} 
+\\
+\\
+\\
+B3:\\
+e1=i+j\\
+t1:=e1\\
+t2:=i-j\\
+B4:i:=e1;\\
+\end{document}
