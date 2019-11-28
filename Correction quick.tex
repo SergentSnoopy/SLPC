@@ -1,0 +1,80 @@
+\documentclass[10pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\author{Prat Gary}
+\title{Correction quick}
+\begin{document}
+\maketitle
+\section{Typage}
+1.\\\\
+$\dfrac{}{(I,O) \vdash \varepsilon \mid(I,O)}$
+\\
+\\\\
+$\dfrac{x \; \not \in  I \sqcup O \quad (I \sqcup \lbrace x \rbrace ,O) \vdash (I,O')}{ (I,O) \vdash  var\, x\, in\, ;  dv \mid (I",O")}$
+\\
+\\\\
+$\dfrac{x \, \not \in  I \sqcup O \quad (I ,O\sqcup \lbrace x \rbrace ) \vdash (I,O')}{ (I,O) \vdash  var\, x\, in\, ;  dv \mid (I",O")}$
+\\
+\\
+2.\\
+$\dfrac{}{(I,O) \vdash n}$
+\\
+\\\\
+$\dfrac{x \in I}{(I,O) \vdash x}$
+\\
+\\\\
+$\dfrac{(I,O)\vdash e1 \quad (I,O) \vdash e2}{(I,O) \vdash e1\, op\, e2}$
+\\
+\\\\
+3.\\
+$\dfrac{}{(I,O) \vdash Skip}$
+\\
+\\\\
+$\dfrac{(I,O) \vdash e \quad x \in O}{(I,O) \vdash x :=e}$
+\\
+\\\\
+$\dfrac{(I,O) \vdash S1 \quad (I,O) \vdash S2}{(I,O) \vdash S1;S2}$
+\\
+\\\\
+4.\\\\
+$\dfrac{(I,O) \vdash e \quad (I,O) \vdash S1 \quad (I,O) \vdash S2}{(I,O) \vdash if \; e \; then \; S1 \; else \; S2 \; fi}$
+\\
+\\\\
+$\dfrac{(I,O) \vdash e \quad (I,O) \vdash S}{(I,O) \vdash while \; e \; do \; S \; od}$
+\\
+\\\\
+$\dfrac{(\emptyset,\emptyset) \vdash dv \mid (I,O) \quad (I,O) \vdash S}{\vdash begin \; dv \; S\; end}$
+\\\\
+\\
+\section{Optimisation}
+5.\\
+\begin{tabular}{|c|c|c|c|c|c|c|c|c|c|}
+\hline 
+• & Gen & Kill & Out & In & Out & In & Out & In  \\ 
+\hline 
+B1 & $\emptyset$ & a,c,x,y & $\emptyset$ & $\emptyset$ &c,x &$\emptyset$  & a,c,x &$\emptyset$   \\ 
+\hline 
+B2 & x,c & c,x,y & $\emptyset$ &c,x & a,x,y& a,c,y & a,x,y & a,c,x  \\ 
+\hline 
+B3 & a,x & a,c,y & $\emptyset$ & a,x & c,x & a,x & a,c,x & a,x \\ 
+\hline 
+B4 & x,y & c & $\emptyset$ & x,y &$\emptyset$ & x,y & $\emptyset$ & x,y  \\ 
+\hline 
+\end{tabular} 
+\\
+\\
+7.\\
+In(b)=(Out(b)$\backslash$Kill(b)) U Gen(b)\\
+8.\\
+Out(b)= $U_{b'\in Suc(b)} $In(b')
+\\
+\\
+10.\\
+Lignes à supprimer:\\
+7,10\\
+\\
+\textbf{On est D'accord ou pas ?}
+
+\end{document}
