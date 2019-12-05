@@ -13,9 +13,9 @@ $\backslash\backslash$ Push(R1) $\rightarrow$ Empile R1\\\\
 \hspace{8cm}\=\kill
  main: \> main.p: \\\\
  Prologue(8) \> Prologue(0) \\ 
- SUB R0,R0,R0 \> LD R1,[FP+8] \\ 
+ SUB R0,R0,R0 \> LD R1,[FP+4] \\ 
  ADD R1,R0,1 \> LD R2,[R1-4]\\
- ST R1,[FP-4] \> LD R3,[FP+8]  \\ 
+ ST R1,[FP-4] \> LD R3,[FP+4]  \\ 
  Push(FP) \>  ST R2,[R3-8]\\ 
  Call main.p \>   Epilogue\\ 
  ADD SP,SP,4 \>  RET\\ 
